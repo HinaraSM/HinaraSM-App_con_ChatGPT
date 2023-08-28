@@ -4,8 +4,6 @@ import streamlit as st
 st.title("Conversor universal")
 st.write("Esta app fue elaborada por 'Hinara Pastora Sánchez Mata'.")
 
-# Lista de categorías y sus conversiones
-categorias = {
 # Lista de categorías y conversiones
 categorias = {
     "Conversiones de temperatura": [
