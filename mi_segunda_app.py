@@ -79,7 +79,7 @@ valor_a_convertir = st.number_input("Ingresa el valor a convertir")
 
 # Realizar las conversiones según la selección
 # Conversiones de temperatura
-elif conversion_seleccionada == "Celsius a Fahrenheit":
+if conversion_seleccionada == "Celsius a Fahrenheit":
     resultado = (valor_a_convertir * 9/5) + 32
     st.write(f"{valor_a_convertir} grados Celsius equivale a {resultado} grados Fahrenheit")
 elif conversion_seleccionada == "Fahrenheit a Celsius":
