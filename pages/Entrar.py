@@ -2,8 +2,8 @@ import streamlit as st
 
 # Datos del usuario de prueba
 usuario_prueba = {
-    "usuario": "usuario_de_prueba",
-    "contrasena": "contrasena_de_prueba"
+    "usuario": "hinara",
+    "contrasena": "hinara12"
 }
 
 # Título de la aplicación
