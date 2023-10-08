@@ -58,9 +58,9 @@ st.markdown(
     """
     <style>
     .logo-container {
-        display: flex;
-        justify-content: flex-end;
-        padding: 10px;
+        position: fixed;
+        top: 10px;
+        right: 10px;
     }
     </style>
     <div class="logo-container">
