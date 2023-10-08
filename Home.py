@@ -52,3 +52,20 @@ st.markdown("---")
 if not resultados:
     st.info("No se encontraron resultados para la búsqueda.")
 
+
+# Logo en la esquina superior derecha
+st.markdown(
+    """
+    <style>
+    .logo-container {
+        display: flex;
+        justify-content: flex-end;
+        padding: 10px;
+    }
+    </style>
+    <div class="logo-container">
+        <img src="https://images.vexels.com/media/users/3/229082/isolated/preview/6fabc24c3830d75486725cc6d786dfbb-logotipo-de-circulos-de-libro.png" alt="Logo" style="width:100px;">
+    </div>
+    """,
+    unsafe_allow_html=True
+)
