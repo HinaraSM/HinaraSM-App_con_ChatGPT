@@ -18,6 +18,16 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+# Logo en la esquina superior derecha
+st.sidebar.markdown(
+    """
+    <div style="position: absolute; top: 10px; right: 10px;">
+        <img src="https://images.vexels.com/media/users/3/229082/isolated/preview/6fabc24c3830d75486725cc6d786dfbb-logotipo-de-circulos-de-libro.png" alt="Logo" style="width:100px;">
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
 # Lista de libros con datos de prueba (título, autor y URL de la imagen)
 libros = [
     {
