@@ -4,7 +4,7 @@ from pages import Entrar, Sobre_nosotros, Registrarse
 # Logo en la esquina superior derecha utilizando HTML
 logo_html = """
 <div style="position: absolute; top: 10px; right: 10px;">
-    <link href="img/logo.png" rel="Logo" style="width:100px;">
+    <img src="img/logo.png" rel="Logo" style="width:100px;">
 </div>
 """
 st.markdown(logo_html, unsafe_allow_html=True)
