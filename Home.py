@@ -1,13 +1,22 @@
 import streamlit as st
 from pages import Entrar, Sobre_nosotros, Registrarse
 
-# Logo en la esquina superior derecha utilizando HTML
-logo_html = """
-<div style="position: absolute; top: 10px; right: 10px;">
-    <img src="img/logo.png" rel="Logo" style="width:100px;">
-</div>
-"""
-st.markdown(logo_html, unsafe_allow_html=True)
+# Logo en la esquina superior derecha
+st.markdown(
+    """
+    <style>
+    .logo-container {
+        position: fixed;
+        top: 40px;
+        right: 10px;
+    }
+    </style>
+    <div class="logo-container">
+        <img src="img/logo.png" alt="Logo" style="width:100px;">
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
 # Lista de libros con datos de prueba (título, autor y URL de la imagen)
 libros = [
