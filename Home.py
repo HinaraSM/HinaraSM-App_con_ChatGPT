@@ -33,23 +33,19 @@ st.header("Inicio")
 busqueda = st.text_input("Buscar libro")
 
 # Filtra los libros según el término de búsqueda
+# Filtra los libros según el término de búsqueda
 resultados = []
 for libro in libros:
     if busqueda.lower() in libro["titulo"].lower() or busqueda.lower() in libro["autor"].lower():
         resultados.append(libro)
 
 # Muestra los resultados en dos columnas
-for i in range(0, len(resultados), 2):
-    col1, col2 = st.beta_columns(2)
-    with col1:
-        st.image(resultados[i]["imagen"], caption=resultados[i]["titulo"], use_column_width=True)
-        st.write("**Título:**", resultados[i]["titulo"])
-        st.write("**Autor:**", resultados[i]["autor"])
-    with col2:
-        if i + 1 < len(resultados):
-            st.image(resultados[i + 1]["imagen"], caption=resultados[i + 1]["titulo"], use_column_width=True)
-            st.write("**Título:**", resultados[i + 1]["titulo"])
-            st.write("**Autor:**", resultados[i + 1]["autor"])
+columnas = st.columns(2)
+for i, resultado in enumerate(resultados):
+    with columnas[i % 2]:  # Alternar entre las dos columnas
+        st.image(resultado["imagen"], caption=resultado["titulo"], use_column_width=True)
+        st.write("**Título:**", resultado["titulo"])
+        st.write("**Autor:**", resultado["autor"])
 st.markdown("---")
 
 # Mensaje si no hay resultados
