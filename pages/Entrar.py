@@ -6,12 +6,12 @@ st.markdown(
     <style>
     .logo-container {
         position: fixed;
-        top: 40px;
+        top: 50px;
         right: 10px;
     }
     </style>
     <div class="logo-container">
-        <img src="https://i.ibb.co/CWhPGm1/logo.png" alt="logo"style="max-width: 100px; height: auto;">
+        <img src="https://i.ibb.co/CWhPGm1/logo.png" alt="logo"style="max-width: 150px; height: auto;">
     </div>
     """,
     unsafe_allow_html=True
