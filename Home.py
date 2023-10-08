@@ -12,12 +12,11 @@ st.markdown(
     }
     </style>
     <div class="logo-container">
-        <img src="https://i.ibb.co/D9Hq01h/logo.png" alt="logo" style="width:100px;>
+        <img src="https://i.ibb.co/D9Hq01h/logo.png" alt="logo" border="0" style="width:100px;>
     </div>
     """,
     unsafe_allow_html=True
 )
-
 # Lista de libros con datos de prueba (título, autor y URL de la imagen)
 libros = [
     {
