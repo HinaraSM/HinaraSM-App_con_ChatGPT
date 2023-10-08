@@ -7,7 +7,7 @@ st.markdown(
     <style>
     .logo-container {
         position: fixed;
-        top: 40px;
+        top: 5px;
         right: 10px;
     }
     </style>
