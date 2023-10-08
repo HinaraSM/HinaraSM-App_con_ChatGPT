@@ -1,5 +1,5 @@
 import streamlit as st
-from pages import home, login, register
+from pages import login, register
 
 
 st.title("LitWave")
