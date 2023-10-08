@@ -1,6 +1,23 @@
 import streamlit as st
 from pages import Entrar, Sobre_nosotros, Registrarse
 
+# Logo en la esquina superior derecha
+st.markdown(
+    """
+    <style>
+    .logo-container {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+    }
+    </style>
+    <div class="logo-container">
+        <img src="https://images.vexels.com/media/users/3/229082/isolated/preview/6fabc24c3830d75486725cc6d786dfbb-logotipo-de-circulos-de-libro.png" alt="Logo" style="width:100px;">
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
 # Lista de libros con datos de prueba (título, autor y URL de la imagen)
 libros = [
     {
@@ -51,21 +68,3 @@ st.markdown("---")
 # Mensaje si no hay resultados
 if not resultados:
     st.info("No se encontraron resultados para la búsqueda.")
-
-
-# Logo en la esquina superior derecha
-st.markdown(
-    """
-    <style>
-    .logo-container {
-        position: fixed;
-        top: 10px;
-        right: 10px;
-    }
-    </style>
-    <div class="logo-container">
-        <img src="https://images.vexels.com/media/users/3/229082/isolated/preview/6fabc24c3830d75486725cc6d786dfbb-logotipo-de-circulos-de-libro.png" alt="Logo" style="width:100px;">
-    </div>
-    """,
-    unsafe_allow_html=True
-)
