@@ -4,7 +4,7 @@ from pages import Entrar, Sobre_nosotros, Registrarse
 # Logo en la esquina superior derecha utilizando HTML
 logo_html = """
 <div style="position: absolute; top: 10px; right: 10px;">
-    <img src="HinaraSM-App_con_ChatGPT/logo.png" alt="Logo" style="width:100px;">
+    <img src="img/logo.png" alt="Logo" style="width:100px;">
 </div>
 """
 st.markdown(logo_html, unsafe_allow_html=True)
