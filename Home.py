@@ -17,6 +17,11 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+# URL de tu imagen cargada en ImgBB
+imagen_url = "https://ibb.co/pfBmY1c"
+
+# Mostrar la imagen en Streamlit
+st.image(imagen_url, caption='Mi Imagen', use_column_width=True)
 
 # Lista de libros con datos de prueba (título, autor y URL de la imagen)
 libros = [
