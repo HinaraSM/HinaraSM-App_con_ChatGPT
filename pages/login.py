@@ -1,36 +1,28 @@
 import streamlit as st
-from pymongo import MongoClient
-import hashlib
-
-# Conexión a la base de datos MongoDB
-#client = MongoClient("mongodb://tu_usuario:tu_contraseña@tu_host/tu_base_de_datos")
-#db = client.tu_base_de_datos
-#usuarios_collection = db.usuarios
-
-usuarios_collection = {
-    "usuario": hinara,
-    "contrasena": hi121212
-}
 
 st.header("Inicio de Sesión")
 
-# Casilla de entrada para el nombre de usuario
-usuario = st.text_input("Usuario")
+# Datos del usuario de prueba
+usuario_prueba = {
+    "usuario": "hinara",
+    "contrasena": "hinara12"
+}
 
-# Casilla de entrada para la contraseña
-contrasena = st.text_input("Contraseña", type="password")
+# Para hacer pruebas, puedes almacenar el usuario de prueba en una lista o un diccionario en memoria
+usuarios_registrados = [usuario_prueba]
 
-# Botón para iniciar sesión
-if st.button("Iniciar Sesión"):
-    # Hash de la contraseña para compararla con la base de datos
-    hashed_password = hashlib.sha256(contrasena.encode()).hexdigest()
-    
-    # Verificar si el usuario y la contraseña coinciden en la base de datos
-    usuario_encontrado = usuarios_collection.find_one({"usuario": usuario, "contrasena": hashed_password})
-    
-    if usuario_encontrado:
-        st.success("Inicio de sesión exitoso.")
-        # Puedes redirigir al usuario a otra página o realizar acciones adicionales después del inicio de sesión.
-    else:
-        st.error("Usuario o contraseña incorrectos. Por favor, inténtalo de nuevo.")
+# Simular la autenticación del usuario
+usuario_input = input("Ingrese su nombre de usuario: ")
+contrasena_input = input("Ingrese su contraseña: ")
 
+# Verificar las credenciales del usuario
+usuario_autenticado = None
+for usuario in usuarios_registrados:
+    if usuario["usuario"] == usuario_input and usuario["contrasena"] == contrasena_input:
+        usuario_autenticado = usuario
+        break
+
+if usuario_autenticado:
+    print("Inicio de sesión exitoso.")
+else:
+    print("Usuario o contraseña incorrectos. Por favor, inténtalo de nuevo.")
