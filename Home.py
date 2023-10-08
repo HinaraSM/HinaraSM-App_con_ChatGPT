@@ -12,7 +12,7 @@ st.markdown(
     }
     </style>
     <div class="logo-container">
-        <img src="img/logo.png" alt="Logo" style="width:100px;">
+        <img src="https://ibb.co/pfBmY1c" alt="Logo" style="width:100px;">
     </div>
     """,
     unsafe_allow_html=True
