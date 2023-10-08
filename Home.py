@@ -7,12 +7,12 @@ st.markdown(
     <style>
     .logo-container {
         position: fixed;
-        top: 5px;
+        top: 40px;
         right: 10px;
     }
     </style>
     <div class="logo-container">
-        <img src="https://i.ibb.co/CWhPGm1/logo.png" alt="logo">
+        <img src="https://i.ibb.co/CWhPGm1/logo.png" alt="logo" style="width:100px;>
     </div>
     """,
     unsafe_allow_html=True
