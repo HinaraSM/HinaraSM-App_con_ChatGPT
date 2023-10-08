@@ -27,7 +27,7 @@ libros = [
 ]
 
 
-st.header("Inicio")
+st.header("Explora y descubre nuevos autores y libros")
 
 # Barra de búsqueda
 busqueda = st.text_input("Buscar libro")
