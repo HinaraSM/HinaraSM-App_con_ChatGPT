@@ -12,16 +12,11 @@ st.markdown(
     }
     </style>
     <div class="logo-container">
-        <img src="https://ibb.co/pfBmY1c" alt="Logo" style="width:100px;">
+        <img src="https://i.ibb.co/D9Hq01h/logo.png" alt="logo" border="0"></a>
     </div>
     """,
     unsafe_allow_html=True
 )
-# URL de tu imagen cargada en ImgBB
-imagen_url = "https://ibb.co/pfBmY1c"
-
-# Mostrar la imagen en Streamlit
-st.image(imagen_url, caption='Mi Imagen', use_column_width=True)
 
 # Lista de libros con datos de prueba (título, autor y URL de la imagen)
 libros = [
