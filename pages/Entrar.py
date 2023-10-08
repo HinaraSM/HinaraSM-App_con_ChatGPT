@@ -7,7 +7,7 @@ usuario_prueba = {
 }
 
 # Título de la aplicación
-st.title("Aplicación de Autenticación de Usuarios")
+st.title("Inicia sesión en LitWave")
 
 # Casilla de entrada para el nombre de usuario
 usuario_input = st.text_input("Ingrese su nombre de usuario")
