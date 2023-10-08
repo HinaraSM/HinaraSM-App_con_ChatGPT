@@ -1,13 +1,13 @@
 import streamlit as st
 
+# Título de la aplicación
+st.title("Inicia sesión en LitWave")
+
 # Datos del usuario de prueba
 usuario_prueba = {
     "usuario": "hinara",
     "contrasena": "hinara12"
 }
-
-# Título de la aplicación
-st.title("Inicia sesión en LitWave")
 
 # Casilla de entrada para el nombre de usuario
 usuario_input = st.text_input("Ingrese su nombre de usuario")
