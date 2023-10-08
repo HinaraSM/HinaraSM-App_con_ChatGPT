@@ -4,7 +4,7 @@ from PIL import Image
 
 st.title("LitWave")
 st.markdown("## Bienvenido a la red social de los lectores")
-st.markdown("LitWave es una plataforma para los amantes de la lectura, donde podrás:")
+st.markdown("### LitWave es una plataforma para los amantes de la lectura, donde podrás:")
 st.write("- Descubrir nuevos libros recomendados especialmente para ti.")
 st.write("- Conectar, interactuar y compartir tu pasión por los libros.")
 st.write("- Comentar tus opiniones sobre libros y autores.")
