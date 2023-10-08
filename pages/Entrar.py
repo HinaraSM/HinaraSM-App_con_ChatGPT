@@ -11,7 +11,7 @@ st.markdown(
     }
     </style>
     <div class="logo-container">
-        <img src="https://images.vexels.com/media/users/3/229082/isolated/preview/6fabc24c3830d75486725cc6d786dfbb-logotipo-de-circulos-de-libro.png" alt="Logo" style="width:100px;">
+        <img src="https://i.ibb.co/CWhPGm1/logo.png" alt="logo"style="max-width: 100px; height: auto;">
     </div>
     """,
     unsafe_allow_html=True
