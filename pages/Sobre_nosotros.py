@@ -1,6 +1,22 @@
 import streamlit as st
 from PIL import Image
 
+# Logo en la esquina superior derecha
+st.markdown(
+    """
+    <style>
+    .logo-container {
+        position: fixed;
+        top: 40px;
+        right: 10px;
+    }
+    </style>
+    <div class="logo-container">
+        <img src="https://images.vexels.com/media/users/3/229082/isolated/preview/6fabc24c3830d75486725cc6d786dfbb-logotipo-de-circulos-de-libro.png" alt="Logo" style="width:100px;">
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
 st.title("LitWave")
 st.markdown("## Bienvenido a la red social de los lectores")
