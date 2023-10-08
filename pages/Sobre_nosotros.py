@@ -25,7 +25,7 @@ st.write("- Descubrir nuevos libros recomendados especialmente para ti.")
 st.write("- Conectar, interactuar y compartir tu pasión por los libros.")
 st.write("- Comentar tus opiniones sobre libros y autores.")
 st.write("- Crear tus propias listas de lectura para enriquecer tu experiencia literaria.")
-st.write("- Seguir a otros lectores, dar me gusta y comentarles")
+st.write("- Seguir a otros lectores, dar me gusta y comentarles.")
 
 # Cargar una imagen
 #image = Image.open('libros.png')    
