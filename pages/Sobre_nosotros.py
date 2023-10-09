@@ -31,7 +31,7 @@ st.write("- Seguir a otros lectores, dar me gusta y comentarles.")
 st.markdown("---")
 st.markdown("### Contactos")
 st.write("Para consultas y soporte, contáctanos en:")
-st.write("Hinara Pastora Sánchez Mata. Correo electrónico: hisanchezm@unal.edu.com")
+st.write("Hinara Pastora Sánchez Mata. Correo electrónico: hisanchezm@unal.edu.co")
 st.write("Juan Camilo Montoya Mejía. Correo electrónico: jumontoyame@unal.edu.co")
 
 # Pie de página
