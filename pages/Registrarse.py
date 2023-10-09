@@ -33,8 +33,10 @@ aceptar_privacidad = st.checkbox("Al marcar esta casilla, confirmo que he leído
 
 # Botón para registrar al usuario
 if st.button("Registrarse"):
+    
     # Verificar si las contraseñas coinciden y las casillas de verificación están marcadas
     if contrasena == confirmar_contrasena and aceptar_terminos and aceptar_privacidad:
+        
         # Guardar el usuario en la base de datos o realizar otras acciones necesarias
         st.success("Registro exitoso. ¡Bienvenido, {}!".format(nombres_apellidos))
     elif contrasena != confirmar_contrasena:
