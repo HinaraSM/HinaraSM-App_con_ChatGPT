@@ -17,6 +17,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 # Lista de libros con datos de prueba (título, autor y URL de la imagen)
 libros = [
     {
@@ -39,7 +40,6 @@ libros = [
         "autor": "Miguel de Cervantes",
         "imagen": "https://planetadelibrosco2.cdnstatics.com/usuaris/libros/fotos/161/original/160444_48282_1_DonQujotedelaMancha.jpg"
     },
-    # Agrega más libros según sea necesario
 ]
 
 
@@ -48,7 +48,6 @@ st.header("Explora y descubre nuevos autores y libros")
 # Barra de búsqueda
 busqueda = st.text_input("Buscar libro")
 
-# Filtra los libros según el término de búsqueda
 # Filtra los libros según el término de búsqueda
 resultados = []
 for libro in libros:
