@@ -28,7 +28,7 @@ confirmar_contrasena = st.text_input("Confirmar Contraseña", type="password")
 correo_electronico = st.text_input("Correo Electrónico")
 # Establece el rango mínimo para permitir años anteriores a 2013
 min_fecha_nacimiento = datetime(1900, 1, 1)
-fecha_nacimiento = st.date_input("Fecha de Nacimiento", min_value=min_fecha_nacimiento, datetime.now())
+fecha_nacimiento = st.date_input("Fecha de Nacimiento", min_value=min_fecha_nacimiento, max_value=datetime.now())
 
 
 # Casillas de verificación para términos y condiciones, y política de privacidad
