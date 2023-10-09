@@ -1,5 +1,6 @@
 import streamlit as st
-from pages import Entrar, Sobre_nosotros, Registrarse
+from pages import Entrar, Sobre_nosotros
+from pages import Registrarse as Register
 
 # Logo en la esquina superior derecha
 st.markdown(
