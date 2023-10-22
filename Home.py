@@ -44,7 +44,17 @@ libros = [
 
 from streamlit import session_state
 
-# ...
+# Verifica si hay parámetros en la URL
+params = st.experimental_get_query_params()
+
+if not params:
+    # Muestra las opciones predeterminadas del menú
+    st.sidebar.title("Menú")
+    selected_page = st.sidebar.radio("Selecciona una opción", ["Inicio", "Entrar", "Registrarse"])
+else:
+    # Oculta las opciones de "Entrar" y "Registrarse" en el menú
+    st.sidebar.title("Menú")
+    selected_page = st.sidebar.radio("Selecciona una opción", ["Inicio"])
 
 # Verifica si el parámetro 'usuario' está presente en la URL
 if 'usuario' in st.experimental_get_query_params():
