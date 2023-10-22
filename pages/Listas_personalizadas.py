@@ -1,10 +1,33 @@
 # mis_libros.py
-
 import streamlit as st
 
 libros_leidos = []
 libros_leyendo = []
 libros_favoritos = []
+
+# Lista de libros con datos de prueba (título, autor y URL de la imagen)
+libros = [
+    {
+        "titulo": "El Alquimista",
+        "autor": "Paulo Coelho",
+        "imagen": "https://planetadelibrosco2.cdnstatics.com/usuaris/libros/fotos/384/original/portada_el-alquimista_paulo-coelho_202306160135.jpg"
+    },
+    {
+        "titulo": "No sé cómo mostrar dónde me duele",
+        "autor": "Amalia Andrade",
+        "imagen": "https://planetadelibrosco2.cdnstatics.com/usuaris/libros/fotos/386/original/portada_no-se-como-mostrar-donde-me-duele_amalia-andrade_202307311626.png"
+    },
+    {
+        "titulo": "1984",
+        "autor": "George Orwell",
+        "imagen": "https://planetadelibrosco2.cdnstatics.com/usuaris/libros/fotos/339/original/338485_portada_1984_george-orwell_202104151338.jpg"
+    },
+    {
+        "titulo": "Don Quijote de la mancha",
+        "autor": "Miguel de Cervantes",
+        "imagen": "https://planetadelibrosco2.cdnstatics.com/usuaris/libros/fotos/161/original/160444_48282_1_DonQujotedelaMancha.jpg"
+    },
+]
 
 # Si el botón "Ver Mis Libros" es seleccionado
 # Botón para ver las listas
