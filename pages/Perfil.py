@@ -1,56 +1,28 @@
 import streamlit as st
 from streamlit import session_state
 
-# Datos del usuario (simulados)
-usuario_prueba = {
-    "usuario": "hinara",
-    "nombres_apellidos": "Hinara Pastora Sánchez Mata"
-}
-
 # Verifica si el parámetro 'usuario' está presente en la URL
 if 'usuario' in st.experimental_get_query_params():
     # Obtiene el nombre de usuario del parámetro de la URL
     usuario = st.experimental_get_query_params()['usuario'][0]
 
     # Verifica si el usuario está autenticado en session_state
-    if not hasattr(session_state, 'usuario') and session_state.usuario["usuario"] == usuario:
-        session_state.is_authenticated = False
-        st.warning("Por favor, inicia sesión para acceder al perfil del usuario.")
-        usuario_input = st.text_input("Usuario")
-        contrasena_input = st.text_input("Contraseña", type="password")
-        if st.button("Iniciar Sesión"):
-            # Lógica de autenticación (reemplaza esto con tu propia lógica)
-            if usuario_input == usuario_prueba["usuario"]:
-                session_state.is_authenticated = True
-    else: 
-        session_state.is_authenticated = True
-
-# Verificar si el usuario está autenticado (puedes implementar tu propia lógica de autenticación aquí)
-    if session_state.is_authenticated:
-        st.warning("Por favor, inicia sesión para acceder al perfil del usuario.")
-        usuario_input = st.text_input("Usuario")
-        contrasena_input = st.text_input("Contraseña", type="password")
-        if st.button("Iniciar Sesión"):
-            # Lógica de autenticación (reemplaza esto con tu propia lógica)
-            if usuario_input == usuario_prueba["usuario"]:
-                session_state.is_authenticated = True
-    
-    if session_state.is_authenticated:
-        st.title(f"Bienvenido, {usuario_prueba['nombres_apellidos']}!")
-    
-        # Opción para cambiar la contraseña
-        nueva_contrasena = st.text_input("Nueva Contraseña", type="password")
-        confirmar_contrasena = st.text_input("Confirmar Contraseña", type="password")
-        if st.button("Cambiar Contraseña"):
-            if nueva_contrasena == confirmar_contrasena:
-                # Lógica para cambiar la contraseña (reemplaza esto con tu propia lógica)
-                st.success("Contraseña cambiada exitosamente.")
-            else:
-                st.error("Las contraseñas no coinciden. Inténtalo de nuevo.")
-    
-        # Botón para cerrar sesión
-        if st.button("Cerrar Sesión"):
-            session_state.is_authenticated = False
-            st.success("Sesión cerrada exitosamente. ¡Hasta luego!")
+    if hasattr(session_state, 'usuario') and session_state.usuario["usuario"] == usuario:
+    # Verificar si el usuario está autenticado (puedes implementar tu propia lógica de autenticación aquí)        
+            st.title(f"Bienvenido, {usuario_prueba['nombres_apellidos']}!")
+            # Opción para cambiar la contraseña
+            nueva_contrasena = st.text_input("Nueva Contraseña", type="password")
+            confirmar_contrasena = st.text_input("Confirmar Contraseña", type="password")
+            if st.button("Cambiar Contraseña"):
+                if nueva_contrasena == confirmar_contrasena:
+                    # Lógica para cambiar la contraseña (reemplaza esto con tu propia lógica)
+                    st.success("Contraseña cambiada exitosamente.")
+                else:
+                    st.error("Las contraseñas no coinciden. Inténtalo de nuevo.")
+        
+            # Botón para cerrar sesión
+            if st.button("Cerrar Sesión"):
+                session_state.is_authenticated = False
+                st.success("Sesión cerrada exitosamente. ¡Hasta luego!")
 
 # Resto de tu aplicación aquí...
