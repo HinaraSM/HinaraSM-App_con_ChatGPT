@@ -29,7 +29,7 @@ usuario_prueba = {
 def verificar_credenciales(usuario_input, contrasena_input):
     usuario_encontrado = None
     if usuario_prueba["usuario"]== usuario_input and usuario_prueba["contrasena"]== contrasena_input:
-        st.success("Inicio de sesión exitoso. ¡Bienvenido, {}!".format(usuario["nombres_apellidos"]))
+        st.success("Inicio de sesión exitoso. ¡Bienvenido, {}!".format(usuario_prueba["nombres_apellidos"]))
         usuario_encontrado = usuario_prueba
     else:
         st.error("Usuario o contraseña incorrectos. Por favor, inténtalo de nuevo.")
