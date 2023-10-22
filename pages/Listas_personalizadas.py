@@ -35,15 +35,39 @@ if st.button("Ver mis libros"):
             st.info("No hay libros favoritos en tu lista.")
 
 # Si el botón "Agregar Libros a Mi Lista" es seleccionado
+
+
 if st.button("Agregar libros a Mi Lista"):
     # ... Código del buscador de libros ...
+    # Barra de búsqueda
+    busqueda = st.text_input("Buscar libro")
+    
+    # Filtra los libros según el término de búsqueda
+    resultados = []
+    for libro in libros:
+        if busqueda.lower() in libro["titulo"].lower() or busqueda.lower() in libro["autor"].lower():
+            resultados.append(libro)
 
+        # Muestra los resultados en dos columnas
+    columnas = st.columns(2)
+    for i, resultado in enumerate(resultados):
+        with columnas[i % 2]:  # Alternar entre las dos columnas
+            st.image(resultado["imagen"], caption=resultado["titulo"], use_column_width=True)
+            st.write("**Título:**", resultado["titulo"])
+            st.write("**Autor:**", resultado["autor"])
+            if st.checkbox("Agregar a la Lista", key=f"checkbox_{i}"):
+                selected_books.append(resultado)  # Agregar el libro a la lista cuando se selecciona
+    st.markdown("---")
+    
+    # Mensaje si no hay resultados
+    if not resultados:
+        st.info("No se encontraron resultados para la búsqueda.")
+
+    
     # Agregar una opción para seleccionar libros
     selected_books = []  # Lista para almacenar los libros seleccionados
     for i, resultado in enumerate(resultados):
         with columnas[i % 2]:
-            if st.checkbox("Agregar a la Lista", key=f"checkbox_{i}"):
-                selected_books.append(resultado)  # Agregar el libro a la lista cuando se selecciona
 
     # Lógica para agregar libros seleccionados a las listas correspondientes
     for libro in selected_books:
