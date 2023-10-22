@@ -35,7 +35,7 @@ if st.button("Ver mis libros"):
             st.info("No hay libros favoritos en tu lista.")
 
 # Si el botón "Agregar Libros a Mi Lista" es seleccionado
-if st.button("Agregar Libros a Mi Lista"):
+if st.button("Agregar libros a Mi Lista"):
     # ... Código del buscador de libros ...
 
     # Agregar una opción para seleccionar libros
