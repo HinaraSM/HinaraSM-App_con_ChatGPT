@@ -5,6 +5,13 @@ libros_leidos = []
 libros_leyendo = []
 libros_favoritos = []
 
+def agregar_libro_a_lista(libro, lista_destino):
+    if st.button(f"Añadir a {lista_destino}"):
+        confirmado = st.checkbox("¿Estás seguro de que quieres agregar este libro?")
+        if confirmado:
+            lista_destino.append(libro)
+            st.success(f"El libro '{libro['titulo']}' ha sido agregado a {lista_destino}.")
+
 # Lista de libros con datos de prueba (título, autor y URL de la imagen)
 libros = [
     {
@@ -78,9 +85,10 @@ if st.button("Agregar libros a Mi Lista"):
             st.image(resultado["imagen"], caption=resultado["titulo"], use_column_width=True)
             st.write("**Título:**", resultado["titulo"])
             st.write("**Autor:**", resultado["autor"])
-            if st.checkbox("Agregar a la Lista", key=f"checkbox_{i}"):
-                selected_books.append(resultado)  # Agregar el libro a la lista cuando se selecciona
-    st.markdown("---")
+            agregar_libro_a_lista(resultado, libros_leidos)  # Botón para agregar a libros leídos
+            agregar_libro_a_lista(resultado, libros_leyendo)  # Botón para agregar a libros en proceso de lectura
+            agregar_libro_a_lista(resultado, libros_favoritos)  # Botón para agregar a libros favoritos
+            st.markdown("---")
     
     # Mensaje si no hay resultados
     if not resultados:
