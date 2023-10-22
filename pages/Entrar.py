@@ -14,6 +14,8 @@ def redirigir_a_pagina_privada():
     st.experimental_set_query_params(usuario=session_state.usuario["usuario"])
     # Redirige a la nueva URL
     st.experimental_rerun()
+    # Limpia los parámetros de la URL después de redirigir
+    st.experimental_set_query_params()
 
 
 # Datos del usuario de prueba
