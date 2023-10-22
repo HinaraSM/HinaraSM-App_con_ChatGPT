@@ -72,22 +72,36 @@ if 'usuario' in st.experimental_get_query_params():
         if st.button("Agregar libros a Mi Lista"):
             # ... Código del buscador de libros ...
             # Barra de búsqueda
+            busqueda = st.text_input("Buscar libro")
+            
+            # Filtra los libros según el término de búsqueda
+            resultados = []
+            for libro in libros:
+                if busqueda.lower() in libro["titulo"].lower() or busqueda.lower() in libro["autor"].lower():
+                    resultados.append(libro)
+        
             # Muestra los resultados en dos columnas
-                resultado_seleccionado = st.selectbox("Selecciona un libro", [libro["titulo"] for libro in libros])
-                lista_destino = st.radio("Selecciona una lista:", ["Leídos", "En Proceso de Lectura", "Favoritos"])
-                confirmado = st.checkbox("¿Estás seguro de que quieres agregar este libro?")
-                agregar_libro = st.form_submit_button("Agregar a la Lista")
-                if agregar_libro:
-                    # Lógica para agregar el libro seleccionado a la lista correspondiente
-                    libro_seleccionado = next((libro for libro in libros if libro["titulo"] == resultado_seleccionado), None)
-                    if libro_seleccionado and confirmado:
-                       if lista_destino == "Leídos":
-                           libros_leidos.append(libro_seleccionado)
-                       elif lista_destino == "En Proceso de Lectura":
-                           libros_leyendo.append(libro_seleccionado)
-                       elif lista_destino == "Favoritos":
-                           libros_favoritos.append(libro_seleccionado)
-                       st.success(f"El libro '{libro_seleccionado['titulo']}' ha sido agregado a {lista_destino}.")
-
+            columnas = st.columns(2)
+            for i, resultado in enumerate(resultados):
+                with columnas[i % 2]:  # Alternar entre las dos columnas
+                    st.image(resultado["imagen"], caption=resultado["titulo"], use_column_width=True)
+                    st.write("**Título:**", resultado["titulo"])
+                    st.write("**Autor:**", resultado["autor"])
+                    agregar_a_lista = st.button("Agregar a la Lista", key=f"checkbox_{i}")
+                    if agregar_a_lista:
+                        lista_destino = st.radio("Selecciona una lista:", ["Leídos", "En Proceso de Lectura", "Favoritos"])
+                        confirmado = st.checkbox("¿Estás seguro de que quieres agregar este libro?")
+                        if confirmado:
+                            if lista_destino == "Leídos":
+                                libros_leidos.append(resultado)
+                            elif lista_destino == "En Proceso de Lectura":
+                                libros_leyendo.append(resultado)
+                            elif lista_destino == "Favoritos":
+                                libros_favoritos.append(resultado)
+                            st.success(f"El libro '{resultado['titulo']}' ha sido agregado a {lista_destino}.")
+        
+            # Mensaje si no hay resultados
+            if not resultados:
+                st.info("No se encontraron resultados para la búsqueda.")
     else:
         st.error("Acceso no autorizado.")
