@@ -2,7 +2,11 @@
 import streamlit as st
 
 libros_leidos = []
-libros_leyendo = []
+libros_leyendo = [    {
+        "titulo": "El Alquimista",
+        "autor": "Paulo Coelho",
+        "imagen": "https://planetadelibrosco2.cdnstatics.com/usuaris/libros/fotos/384/original/portada_el-alquimista_paulo-coelho_202306160135.jpg"
+    }]
 libros_favoritos = []
 
 # Lista de libros con datos de prueba (título, autor y URL de la imagen)
