@@ -88,17 +88,17 @@ if 'usuario' in st.experimental_get_query_params():
                     st.write("**Título:**", resultado["titulo"])
                     st.write("**Autor:**", resultado["autor"])
                     agregar_a_lista = st.button("Agregar a la Lista", key=f"checkbox_{i}")
-                    if agregar_a_lista:
-                        lista_destino = st.radio("Selecciona una lista:", ["Leídos", "En Proceso de Lectura", "Favoritos"])
-                        confirmado = st.checkbox("¿Estás seguro de que quieres agregar este libro?")
-                        if confirmado:
-                            if lista_destino == "Leídos":
-                                libros_leidos.append(resultado)
-                            elif lista_destino == "En Proceso de Lectura":
-                                libros_leyendo.append(resultado)
-                            elif lista_destino == "Favoritos":
-                                libros_favoritos.append(resultado)
-                            st.success(f"El libro '{resultado['titulo']}' ha sido agregado a {lista_destino}.")
+                    if agregar_libro:
+                        # Lógica para agregar el libro seleccionado a la lista correspondiente
+                        libro_seleccionado = next((libro for libro in libros if libro["titulo"] == resultado_seleccionado), None)
+                        if libro_seleccionado and confirmado:
+                                if lista_destino == "Leídos":
+                                    libros_leidos.append(libro_seleccionado)
+                                elif lista_destino == "En Proceso de Lectura":
+                                    libros_leyendo.append(libro_seleccionado)
+                                elif lista_destino == "Favoritos":
+                                    libros_favoritos.append(libro_seleccionado)
+                                st.success(f"El libro '{libro_seleccionado['titulo']}' ha sido agregado a {lista_destino}.")
         
             # Mensaje si no hay resultados
             if not resultados:
