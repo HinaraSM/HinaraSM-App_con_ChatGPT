@@ -79,7 +79,8 @@ if st.button("Agregar libros a Mi Lista"):
             st.image(resultado["imagen"], caption=resultado["titulo"], use_column_width=True)
             st.write("**Título:**", resultado["titulo"])
             st.write("**Autor:**", resultado["autor"])
-            if st.checkbox("Agregar a la Lista", key=f"checkbox_{i}"):
+            agregar_a_lista = st.button("Agregar a la Lista", key=f"checkbox_{i}")
+            if agregar_a_lista:
                 lista_destino = st.radio("Selecciona una lista:", ["Leídos", "En Proceso de Lectura", "Favoritos"])
                 confirmado = st.checkbox("¿Estás seguro de que quieres agregar este libro?")
                 if confirmado:
