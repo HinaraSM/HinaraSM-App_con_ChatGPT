@@ -76,6 +76,8 @@ if 'usuario' in st.experimental_get_query_params():
         if st.button("Agregar libros a Mi Lista"):
                 # Filtra los libros según el término de búsqueda
                 resultados = []
+                busqueda = st.text_input("Buscar libro")
+
                 for libro in libros:
                     if busqueda.lower() in libro["titulo"].lower() or busqueda.lower() in libro["autor"].lower():
                         resultados.append(libro)
