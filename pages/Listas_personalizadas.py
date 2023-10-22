@@ -91,7 +91,8 @@ if st.button("Agregar libros a Mi Lista"):
             st.image(resultado["imagen"], caption=resultado["titulo"], use_column_width=True)
             st.write("**Título:**", resultado["titulo"])
             st.write("**Autor:**", resultado["autor"])
-            agregar_libro_a_lista(resultado)
+            if st.checkbox("Agregar a la Lista", key=f"checkbox_{i}"):
+                agregar_libro_a_lista(resultado)
             st.markdown("---")
 
     
