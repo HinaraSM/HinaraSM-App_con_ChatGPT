@@ -4,20 +4,6 @@ import streamlit as st
 libros_leidos = []
 libros_leyendo = []
 libros_favoritos = []
-selected_books = []  # Lista para almacenar los libros seleccionados
-
-def agregar_libro_a_lista(libro):
-    lista_destino = st.radio("Selecciona una lista:", ["Leídos", "En Proceso de Lectura", "Favoritos"])
-    if st.button(f"Añadir a {lista_destino}"):
-        confirmado = st.checkbox("¿Estás seguro de que quieres agregar este libro?")
-        if confirmado:
-            if lista_destino == "Leídos":
-                libros_leidos.append(libro)
-            elif lista_destino == "En Proceso de Lectura":
-                libros_leyendo.append(libro)
-            elif lista_destino == "Favoritos":
-                libros_favoritos.append(libro)
-            st.success(f"El libro '{libro['titulo']}' ha sido agregado a {lista_destino}.")
 
 # Lista de libros con datos de prueba (título, autor y URL de la imagen)
 libros = [
@@ -44,7 +30,6 @@ libros = [
 ]
 
 # Si el botón "Ver Mis Libros" es seleccionado
-# Botón para ver las listas
 if st.button("Ver mis libros"):
     # Opción de selección para elegir la lista a mostrar
     categoria_seleccionada = st.selectbox("Selecciona una categoría", ["Leídos", "En Proceso de Lectura", "Favoritos"])
@@ -72,8 +57,6 @@ if st.button("Ver mis libros"):
             st.info("No hay libros favoritos en tu lista.")
 
 # Si el botón "Agregar Libros a Mi Lista" es seleccionado
-
-
 if st.button("Agregar libros a Mi Lista"):
     # ... Código del buscador de libros ...
     # Barra de búsqueda
@@ -85,7 +68,7 @@ if st.button("Agregar libros a Mi Lista"):
         if busqueda.lower() in libro["titulo"].lower() or busqueda.lower() in libro["autor"].lower():
             resultados.append(libro)
 
-        # Muestra los resultados en dos columnas
+    # Muestra los resultados en dos columnas
     columnas = st.columns(2)
     for i, resultado in enumerate(resultados):
         with columnas[i % 2]:  # Alternar entre las dos columnas
@@ -93,29 +76,17 @@ if st.button("Agregar libros a Mi Lista"):
             st.write("**Título:**", resultado["titulo"])
             st.write("**Autor:**", resultado["autor"])
             if st.checkbox("Agregar a la Lista", key=f"checkbox_{i}"):
-                selected_books.append(resultado)  # Agregar el libro a la lista cuando se selecciona
-            st.markdown("---")
+                lista_destino = st.radio("Selecciona una lista:", ["Leídos", "En Proceso de Lectura", "Favoritos"])
+                confirmado = st.checkbox("¿Estás seguro de que quieres agregar este libro?")
+                if confirmado:
+                    if lista_destino == "Leídos":
+                        libros_leidos.append(resultado)
+                    elif lista_destino == "En Proceso de Lectura":
+                        libros_leyendo.append(resultado)
+                    elif lista_destino == "Favoritos":
+                        libros_favoritos.append(resultado)
+                    st.success(f"El libro '{resultado['titulo']}' ha sido agregado a {lista_destino}.")
 
-    
     # Mensaje si no hay resultados
     if not resultados:
         st.info("No se encontraron resultados para la búsqueda.")
-
-    
-    # Agregar una opción para seleccionar libros
-    # Lógica para agregar libros seleccionados a las listas correspondientes
-    for libro in selected_books:
-        lista_destino = st.radio("Selecciona una lista:", ["Leídos", "En Proceso de Lectura", "Favoritos"])
-        if st.button(f"Añadir a {lista_destino}"):
-            confirmado = st.checkbox("¿Estás seguro de que quieres agregar este libro?")
-        if confirmado:
-            if lista_destino == "Leídos":
-                libros_leidos.append(libro)
-            elif lista_destino == "En Proceso de Lectura":
-                libros_leyendo.append(libro)
-            elif lista_destino == "Favoritos":
-                libros_favoritos.append(libro)
-            st.success(f"El libro '{libro['titulo']}' ha sido agregado a {lista_destino}.")
-
-
-    # Guardar las listas en la base de datos o en la memoria
