@@ -28,7 +28,10 @@ usuario_prueba = {
 # Función para verificar las credenciales del usuario en la base de datos
 def verificar_credenciales(usuario_input, contrasena_input):
     if usuario_prueba["usuario"]== usuario_input and usuario_prueba["contrasena"]== contrasena_input:
+        st.success("Inicio de sesión exitoso. ¡Bienvenido, {}!".format(usuario["nombres_apellidos"]))
         usuario_encontrado= usuario_prueba
+    else:
+        st.error("Usuario o contraseña incorrectos. Por favor, inténtalo de nuevo.")
     return usuario_encontrado
 
 # Estado de la aplicación
@@ -58,11 +61,8 @@ if not is_authenticated:
     if st.button("Iniciar Sesión"):
         usuario = verificar_credenciales(usuario_input, contrasena_input)
         if usuario:
-            st.success("Inicio de sesión exitoso. ¡Bienvenido, {}!".format(usuario["nombres_apellidos"]))
             session_state.usuario = usuario
             is_authenticated=True
             redirigir_a_pagina_privada()  # Llama a la función de redirección
-        else:
-            st.error("Usuario o contraseña incorrectos. Por favor, inténtalo de nuevo.")
 
 
