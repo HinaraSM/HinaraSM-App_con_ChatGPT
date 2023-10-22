@@ -74,13 +74,6 @@ if 'usuario' in st.experimental_get_query_params():
 
         # Si el botón "Agregar Libros a Mi Lista" es seleccionado
         if st.button("Agregar libros a Mi Lista"):
-            # ... Código del buscador de libros ...
-            # Barra de búsqueda
-            # Si el botón "Agregar Libros a Mi Lista" es seleccionado
-                with st.form("buscar_libros_form"):
-                    busqueda = st.text_input("Buscar libro")
-                    st.form_submit_button("Buscar")
-                
                 # Filtra los libros según el término de búsqueda
                 resultados = []
                 for libro in libros:
@@ -94,7 +87,7 @@ if 'usuario' in st.experimental_get_query_params():
                         st.image(resultado["imagen"], caption=resultado["titulo"], use_column_width=True)
                         st.write("**Título:**", resultado["titulo"])
                         st.write("**Autor:**", resultado["autor"])
-                        agregar_a_lista = st.form_submit_button(f"Agregar '{resultado['titulo']}' a la Lista", key=f"checkbox_{i}")
+                        agregar_a_lista = st.button(f"Agregar '{resultado['titulo']}' a la Lista", key=f"button_{i}")
                         if agregar_a_lista:
                             lista_destino = st.radio("Selecciona una lista:", ["Leídos", "En Proceso de Lectura", "Favoritos"])
                             confirmado = st.checkbox("¿Estás seguro de que quieres agregar este libro?")
