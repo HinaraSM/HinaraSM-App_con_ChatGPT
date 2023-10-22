@@ -42,27 +42,43 @@ libros = [
     },
 ]
 
+from streamlit import session_state
 
-st.header("Explora y descubre nuevos autores y libros")
+# ...
 
-# Barra de búsqueda
-busqueda = st.text_input("Buscar libro")
-
-# Filtra los libros según el término de búsqueda
-resultados = []
-for libro in libros:
-    if busqueda.lower() in libro["titulo"].lower() or busqueda.lower() in libro["autor"].lower():
-        resultados.append(libro)
-
-# Muestra los resultados en dos columnas
-columnas = st.columns(2)
-for i, resultado in enumerate(resultados):
-    with columnas[i % 2]:  # Alternar entre las dos columnas
-        st.image(resultado["imagen"], caption=resultado["titulo"], use_column_width=True)
-        st.write("**Título:**", resultado["titulo"])
-        st.write("**Autor:**", resultado["autor"])
-st.markdown("---")
-
-# Mensaje si no hay resultados
-if not resultados:
-    st.info("No se encontraron resultados para la búsqueda.")
+# Verifica si el parámetro 'usuario' está presente en la URL
+if 'usuario' in st.experimental_get_query_params():
+    # Obtiene el nombre de usuario del parámetro de la URL
+    usuario = st.experimental_get_query_params()['usuario'][0]
+    
+    # Verifica si el usuario está autenticado en session_state
+    if hasattr(session_state, 'usuario') and session_state.usuario["usuario"] == usuario:
+        st.title(f"Bienvenido, {usuario}!")
+        # Muestra las opciones específicas para usuarios autenticados
+        # ...
+    else:
+        st.error("Acceso no autorizado.")
+else:
+    st.header("Explora y descubre nuevos autores y libros")
+    
+    # Barra de búsqueda
+    busqueda = st.text_input("Buscar libro")
+    
+    # Filtra los libros según el término de búsqueda
+    resultados = []
+    for libro in libros:
+        if busqueda.lower() in libro["titulo"].lower() or busqueda.lower() in libro["autor"].lower():
+            resultados.append(libro)
+    
+    # Muestra los resultados en dos columnas
+    columnas = st.columns(2)
+    for i, resultado in enumerate(resultados):
+        with columnas[i % 2]:  # Alternar entre las dos columnas
+            st.image(resultado["imagen"], caption=resultado["titulo"], use_column_width=True)
+            st.write("**Título:**", resultado["titulo"])
+            st.write("**Autor:**", resultado["autor"])
+    st.markdown("---")
+    
+    # Mensaje si no hay resultados
+    if not resultados:
+        st.info("No se encontraron resultados para la búsqueda.")
