@@ -38,69 +38,78 @@ libros = [
     },
 ]
 
-# Estado de la aplicación usando session_state
-if "libros_leidos" not in st.session_state:
-    st.session_state.libros_leidos = []
-if "libros_leyendo" not in st.session_state:
-    st.session_state.libros_leyendo = []
-if "libros_favoritos" not in st.session_state:
-    st.session_state.libros_favoritos = []
-
+# Si el botón "Ver Mis Libros" es seleccionado
 # Verifica si el parámetro 'usuario' está presente en la URL
 if 'usuario' in st.experimental_get_query_params():
-    # ... código para verificar el usuario (omitiendo para la explicación) ...
-    
-    # Formulario para agregar libros a la lista
-    st.subheader("Agregar libros a la lista")
-    busqueda = st.text_input("Buscar libro")
-    resultado_seleccionado = st.selectbox("Selecciona un libro", [libro["titulo"] for libro in libros])
-    lista_destino = st.radio("Selecciona una lista:", ["Leídos", "En Proceso de Lectura", "Favoritos"])
-    confirmado = st.checkbox("¿Estás seguro de que quieres agregar este libro?")
-    agregar_libro = st.form_submit_button("Agregar a la Lista")
+    # Obtiene el nombre de usuario del parámetro de la URL
+    usuario = st.experimental_get_query_params()['usuario'][0]
 
-    if agregar_libro:
-        # Lógica para agregar el libro seleccionado a la lista correspondiente
-        libro_seleccionado = next((libro for libro in libros if libro["titulo"] == resultado_seleccionado), None)
-        if libro_seleccionado and confirmado:
-            if lista_destino == "Leídos":
-                st.session_state.libros_leidos.append(libro_seleccionado)
-            elif lista_destino == "En Proceso de Lectura":
-                st.session_state.libros_leyendo.append(libro_seleccionado)
-            elif lista_destino == "Favoritos":
-                st.session_state.libros_favoritos.append(libro_seleccionado)
-            st.success(f"El libro '{libro_seleccionado['titulo']}' ha sido agregado a {lista_destino}.")
+    # Verifica si el usuario está autenticado en session_state
+    if hasattr(session_state, 'usuario') and session_state.usuario["usuario"] == usuario:
+        if st.button("Ver mis libros"):
+            # Opción de selección para elegir la lista a mostrar
+            categoria_seleccionada = st.selectbox("Selecciona una categoría", ["Leídos", "En Proceso de Lectura", "Favoritos"])
 
-# Mostrar la lista seleccionada
-if categoria_seleccionada == "Leídos":
-    if st.session_state.libros_leidos:
-        st.header("Leídos")
-        for libro in st.session_state.libros_leidos:
-            st.image(libro["imagen"], caption=libro["titulo"], use_column_width=True)
-            st.write("**Título:**", libro["titulo"])
-            st.write("**Autor:**", libro["autor"])
-    else:
-        st.info("No hay libros leídos en tu lista.")
-elif categoria_seleccionada == "En Proceso de Lectura":
-    if st.session_state.libros_leyendo:
-        st.header("En Proceso de Lectura")
-        for libro in st.session_state.libros_leyendo:
-            st.image(libro["imagen"], caption=libro["titulo"], use_column_width=True)
-            st.write("**Título:**", libro["titulo"])
-            st.write("**Autor:**", libro["autor"])
-    else:
-        st.info("No hay libros en proceso de lectura en tu lista.")
-elif categoria_seleccionada == "Favoritos":
-    if st.session_state.libros_favoritos:
-        st.header("Favoritos")
-        for libro in st.session_state.libros_favoritos:
-            st.image(libro["imagen"], caption=libro["titulo"], use_column_width=True)
-            st.write("**Título:**", libro["titulo"])
-            st.write("**Autor:**", libro["autor"])
-    else:
-        st.info("No hay libros favoritos en tu lista.")
-        
-            # Mensaje si no hay resultados
-            if not resultados:
-                st.info("No se encontraron resultados para la búsqueda.")
+            st.title("Mis Libros")
+
+            # Mostrar la lista seleccionada
+            if categoria_seleccionada == "Leídos":
+                if libros_leidos:
+                    st.header("Leídos")
+                    st.table(libros_leidos)
+                else:
+                    st.info("No hay libros leídos en tu lista.")
+            elif categoria_seleccionada == "En Proceso de Lectura":
+                if libros_leyendo:
+                    st.header("En Proceso de Lectura")
+                    st.table(libros_leyendo)
+                else:
+                    st.info("No hay libros en proceso de lectura en tu lista.")
+            elif categoria_seleccionada == "Favoritos":
+                if libros_favoritos:
+                    st.header("Favoritos")
+                    st.table(libros_favoritos)
+                else:
+                    st.info("No hay libros favoritos en tu lista.")
+
+        # Si el botón "Agregar Libros a Mi Lista" es seleccionado
+        if st.button("Agregar libros a Mi Lista"):
+            # ... Código del buscador de libros ...
+            # Barra de búsqueda
+            # Si el botón "Agregar Libros a Mi Lista" es seleccionado
+                with st.form("buscar_libros_form"):
+                    busqueda = st.text_input("Buscar libro")
+                    st.form_submit_button("Buscar")
+                
+                # Filtra los libros según el término de búsqueda
+                resultados = []
+                for libro in libros:
+                    if busqueda.lower() in libro["titulo"].lower() or busqueda.lower() in libro["autor"].lower():
+                        resultados.append(libro)
+                
+                # Muestra los resultados en dos columnas
+                columnas = st.columns(2)
+                for i, resultado in enumerate(resultados):
+                    with columnas[i % 2]:  # Alternar entre las dos columnas
+                        st.image(resultado["imagen"], caption=resultado["titulo"], use_column_width=True)
+                        st.write("**Título:**", resultado["titulo"])
+                        st.write("**Autor:**", resultado["autor"])
+                        agregar_a_lista = st.form_submit_button(f"Agregar '{resultado['titulo']}' a la Lista", key=f"checkbox_{i}")
+                        if agregar_a_lista:
+                            lista_destino = st.radio("Selecciona una lista:", ["Leídos", "En Proceso de Lectura", "Favoritos"])
+                            confirmado = st.checkbox("¿Estás seguro de que quieres agregar este libro?")
+                            if confirmado:
+                                if lista_destino == "Leídos":
+                                    libros_leidos.append(resultado)
+                                elif lista_destino == "En Proceso de Lectura":
+                                    libros_leyendo.append(resultado)
+                                elif lista_destino == "Favoritos":
+                                    libros_favoritos.append(resultado)
+                                st.success(f"El libro '{resultado['titulo']}' ha sido agregado a {lista_destino}.")
+                
+                # Mensaje si no hay resultados
+                if not resultados:
+                    st.info("No se encontraron resultados para la búsqueda.")
+
     else:
         st.error("Acceso no autorizado.")
