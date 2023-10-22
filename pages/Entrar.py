@@ -22,7 +22,8 @@ def redirigir_a_pagina_privada():
 usuario_prueba = {
     "usuario": "hinara",
     "contrasena": "hinara12",
-    "nombres_apellidos": "Hinara Pastora Sánchez Mata"
+    "nombres_apellidos": "Hinara Pastora Sánchez Mata",
+    "email": "hinarasm01212@gmail.com"
 }
 
 # Función para verificar las credenciales del usuario en la base de datos
