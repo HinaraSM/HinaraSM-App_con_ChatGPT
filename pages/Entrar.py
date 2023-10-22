@@ -1,7 +1,6 @@
 import streamlit as st
 # from pymongo import MongoClient
 from datetime import datetime
-import nueva_pagina
 
 # Conexión a la base de datos MongoDB
 #client = MongoClient("mongodb://tu_usuario:tu_contraseña@tu_host:tu_puerto/tu_base_de_datos")
