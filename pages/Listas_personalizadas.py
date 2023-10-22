@@ -2,7 +2,11 @@
 import streamlit as st
 from streamlit import session_state
 
-libros_leidos = []
+libros_leidos = [    {
+        "titulo": "No sé cómo mostrar dónde me duele",
+        "autor": "Amalia Andrade",
+        "imagen": "https://planetadelibrosco2.cdnstatics.com/usuaris/libros/fotos/386/original/portada_no-se-como-mostrar-donde-me-duele_amalia-andrade_202307311626.png"
+    }]
 libros_leyendo = [    {
         "titulo": "El Alquimista",
         "autor": "Paulo Coelho",
