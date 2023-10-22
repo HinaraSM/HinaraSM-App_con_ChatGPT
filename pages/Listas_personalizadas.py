@@ -42,12 +42,6 @@ if 'usuario' in st.experimental_get_query_params():
     
     # Verifica si el usuario está autenticado en session_state
     if hasattr(session_state, 'usuario') and session_state.usuario["usuario"] == usuario:
-        st.title(f"Bienvenido, {usuario}!")
-        # Muestra las opciones específicas para usuarios autenticados
-        # ...
-    else:
-        st.error("Acceso no autorizado.")
-else:
         if st.button("Ver mis libros"):
             # Opción de selección para elegir la lista a mostrar
             categoria_seleccionada = st.selectbox("Selecciona una categoría", ["Leídos", "En Proceso de Lectura", "Favoritos"])
@@ -109,3 +103,5 @@ else:
             # Mensaje si no hay resultados
             if not resultados:
                 st.info("No se encontraron resultados para la búsqueda.")
+    else:
+        st.error("Acceso no autorizado.")
