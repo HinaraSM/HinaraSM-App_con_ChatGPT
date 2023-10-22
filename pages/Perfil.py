@@ -10,7 +10,7 @@ if 'usuario' in st.experimental_get_query_params():
         st.title(f"Bienvenido, {usuario}!")
 
         # Obtener y mostrar los datos actuales del usuario
-        nombre_actual = session_state.usuario.get("nombre", "")
+        nombre_actual = session_state.usuario.get("nombres_apellidos", "")
         email_actual = session_state.usuario.get("email", "")
 
         # Campo de entrada para el nuevo nombre
