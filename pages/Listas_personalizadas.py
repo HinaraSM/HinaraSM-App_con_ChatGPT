@@ -89,9 +89,6 @@ if st.button("Agregar libros a Mi Lista"):
     
     # Agregar una opción para seleccionar libros
     selected_books = []  # Lista para almacenar los libros seleccionados
-    for i, resultado in enumerate(resultados):
-        with columnas[i % 2]:
-
     # Lógica para agregar libros seleccionados a las listas correspondientes
     for libro in selected_books:
         if libro not in libros_leidos and libro not in libros_leyendo and libro not in libros_favoritos:
