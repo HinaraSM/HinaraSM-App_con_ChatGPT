@@ -4,6 +4,7 @@ import streamlit as st
 libros_leidos = []
 libros_leyendo = []
 libros_favoritos = []
+selected_books = []  # Lista para almacenar los libros seleccionados
 
 def agregar_libro_a_lista(libro):
     lista_destino = st.radio("Selecciona una lista:", ["Leídos", "En Proceso de Lectura", "Favoritos"])
@@ -92,7 +93,7 @@ if st.button("Agregar libros a Mi Lista"):
             st.write("**Título:**", resultado["titulo"])
             st.write("**Autor:**", resultado["autor"])
             if st.checkbox("Agregar a la Lista", key=f"checkbox_{i}"):
-                agregar_libro_a_lista(resultado)
+                selected_books.append(resultado)  # Agregar el libro a la lista cuando se selecciona
             st.markdown("---")
 
     
@@ -102,15 +103,19 @@ if st.button("Agregar libros a Mi Lista"):
 
     
     # Agregar una opción para seleccionar libros
-    selected_books = []  # Lista para almacenar los libros seleccionados
     # Lógica para agregar libros seleccionados a las listas correspondientes
     for libro in selected_books:
-        if libro not in libros_leidos and libro not in libros_leyendo and libro not in libros_favoritos:
-            if libro["categoria"] == "leidos":
+        lista_destino = st.radio("Selecciona una lista:", ["Leídos", "En Proceso de Lectura", "Favoritos"])
+        if st.button(f"Añadir a {lista_destino}"):
+            confirmado = st.checkbox("¿Estás seguro de que quieres agregar este libro?")
+        if confirmado:
+            if lista_destino == "Leídos":
                 libros_leidos.append(libro)
-            elif libro["categoria"] == "leyendo":
+            elif lista_destino == "En Proceso de Lectura":
                 libros_leyendo.append(libro)
-            elif libro["categoria"] == "favoritos":
+            elif lista_destino == "Favoritos":
                 libros_favoritos.append(libro)
+            st.success(f"El libro '{libro['titulo']}' ha sido agregado a {lista_destino}.")
+
 
     # Guardar las listas en la base de datos o en la memoria
