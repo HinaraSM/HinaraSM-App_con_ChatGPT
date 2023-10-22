@@ -33,13 +33,8 @@ libros = [
     },
 ]
 
-# Botón para ver las listas
-ver_libros = st.button("Ver mis libros")
-agregar_libros = st.button("Agregar libros a Mi Lista")
-
-
 # Si el botón "Ver Mis Libros" es seleccionado
-if ver_libros:
+if st.button("Ver mis libros"):
     # Opción de selección para elegir la lista a mostrar
     categoria_seleccionada = st.selectbox("Selecciona una categoría", ["Leídos", "En Proceso de Lectura", "Favoritos"])
 
@@ -66,7 +61,7 @@ if ver_libros:
             st.info("No hay libros favoritos en tu lista.")
 
 # Si el botón "Agregar Libros a Mi Lista" es seleccionado
-if agregar_libros:
+if st.button("Agregar libros a Mi Lista"):
     # ... Código del buscador de libros ...
     # Barra de búsqueda
     busqueda = st.text_input("Buscar libro")
