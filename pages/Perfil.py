@@ -25,4 +25,4 @@ if 'usuario' in st.experimental_get_query_params():
                 session_state.is_authenticated = False
                 st.success("Sesión cerrada exitosamente. ¡Hasta luego!")
     else:
-        st.error("Acceso no autorizado.")
+        st.error("Acceso no autorizado, inicie sesión para poder acceder.")
