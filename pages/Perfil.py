@@ -44,8 +44,6 @@ if 'usuario' in st.experimental_get_query_params():
                     st.success("Contraseña cambiada exitosamente.")
                 else:
                     st.error("Las contraseñas no coinciden. Inténtalo de nuevo.")
-        else:
-            st.error("La contraseña anterior es incorrecta. Inténtalo de nuevo.")
 
         # Botón para cerrar sesión
         if st.button("Cerrar Sesión"):
