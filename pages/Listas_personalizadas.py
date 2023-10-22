@@ -107,4 +107,4 @@ if 'usuario' in st.experimental_get_query_params():
                     st.info("No se encontraron resultados para la búsqueda.")
 
     else:
-        st.error("Acceso no autorizado, inicie sesión para poder acceder..")
+        st.error("Acceso no autorizado, inicie sesión para poder acceder.")
