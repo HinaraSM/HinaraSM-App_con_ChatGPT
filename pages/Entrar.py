@@ -10,7 +10,7 @@ from datetime import datetime
 # Datos del usuario de prueba
 usuario_prueba = {
     "usuario": "hinara",
-    "contrasena": "hinara12"
+    "contrasena": "hinara12",
     "nombres_apellidos": "Hinara Pastora Sánchez Mata"
 }
 
