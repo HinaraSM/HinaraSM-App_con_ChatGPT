@@ -53,16 +53,14 @@ st.markdown(
 
 if not is_authenticated:
     st.title("Inicia sesión en LitWave")
-
     usuario_input = st.text_input("Ingrese su nombre de usuario")
     contrasena_input = st.text_input("Ingrese su contraseña", type="password")
-
     if st.button("Iniciar Sesión"):
         usuario = verificar_credenciales(usuario_input, contrasena_input)
         if usuario:
-            is_authenticated = True
             st.success("Inicio de sesión exitoso. ¡Bienvenido, {}!".format(usuario["nombres_apellidos"]))
             session_state.usuario = usuario
+            is_authenticated=True
             redirigir_a_pagina_privada()  # Llama a la función de redirección
         else:
             st.error("Usuario o contraseña incorrectos. Por favor, inténtalo de nuevo.")
