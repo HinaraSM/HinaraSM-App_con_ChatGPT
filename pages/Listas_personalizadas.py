@@ -2,18 +2,37 @@
 
 import streamlit as st
 
+libros_leidos = []
+libros_leyendo = []
+libros_favoritos = []
+
 # Si el botón "Ver Mis Libros" es seleccionado
-if st.button("Ver Mis Libros"):
+# Botón para ver las listas
+if st.button("Ver mis libros"):
+    # Opción de selección para elegir la lista a mostrar
+    categoria_seleccionada = st.selectbox("Selecciona una categoría", ["Leídos", "En Proceso de Lectura", "Favoritos"])
+
     st.title("Mis Libros")
 
-    st.header("Leídos")
-    st.table(libros_leidos)
-
-    st.header("En Proceso de Lectura")
-    st.table(libros_leyendo)
-
-    st.header("Favoritos")
-    st.table(libros_favoritos)
+    # Mostrar la lista seleccionada
+    if categoria_seleccionada == "Leídos":
+        if libros_leidos:
+            st.header("Leídos")
+            st.table(libros_leidos)
+        else:
+            st.info("No hay libros leídos en tu lista.")
+    elif categoria_seleccionada == "En Proceso de Lectura":
+        if libros_leyendo:
+            st.header("En Proceso de Lectura")
+            st.table(libros_leyendo)
+        else:
+            st.info("No hay libros en proceso de lectura en tu lista.")
+    elif categoria_seleccionada == "Favoritos":
+        if libros_favoritos:
+            st.header("Favoritos")
+            st.table(libros_favoritos)
+        else:
+            st.info("No hay libros favoritos en tu lista.")
 
 # Si el botón "Agregar Libros a Mi Lista" es seleccionado
 if st.button("Agregar Libros a Mi Lista"):
