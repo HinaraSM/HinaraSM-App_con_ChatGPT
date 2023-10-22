@@ -16,7 +16,8 @@ usuario_prueba = {
 
 # Función para verificar las credenciales del usuario en la base de datos
 def verificar_credenciales(usuario_input, contrasena_input):
-    usuario_encontrado = usuario_prueba["usuario"]== usuario_input and usuario_prueba["contrasena"]== contrasena_input
+    if usuario_prueba["usuario"]== usuario_input and usuario_prueba["contrasena"]== contrasena_input:
+        usuario_encontrado= usuario_prueba
     return usuario_encontrado
 
 # Estado de la aplicación
