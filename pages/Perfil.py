@@ -40,7 +40,7 @@ if 'usuario' in st.experimental_get_query_params():
 
         # Botón para cerrar sesión
         if st.button("Cerrar Sesión"):
-            session_state.usuario = None
+            session_state.usuario = " "
             st.success("Sesión cerrada exitosamente. ¡Hasta luego!")
 
     else:
