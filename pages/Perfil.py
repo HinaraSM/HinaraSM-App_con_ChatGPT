@@ -19,35 +19,35 @@ if 'usuario' in st.experimental_get_query_params():
 
         # Verificar la contraseña anterior antes de permitir cambios
         if contrasena_anterior == contrasena_actual:
-            # Campo de entrada para el nuevo nombre
-            nuevo_nombre = st.text_input("Nuevo Nombre", nombre_actual)
+            # Iniciar el formulario
+            with st.form(key='cambiar_datos_form'):
+                # Campo de entrada para el nuevo nombre
+                nuevo_nombre = st.text_input("Nuevo Nombre", nombre_actual)
 
-            # Campo de entrada para el nuevo correo electrónico
-            nuevo_email = st.text_input("Nuevo Correo Electrónico", email_actual)
+                # Campo de entrada para el nuevo correo electrónico
+                nuevo_email = st.text_input("Nuevo Correo Electrónico", email_actual)
 
-            # Botón para guardar los cambios
-            if st.button("Guardar Cambios"):
-                # Guardar los nuevos datos del usuario (reemplaza esto con tu propia lógica)
-                session_state.usuario["nombres_apellidos"] = nuevo_nombre
-                session_state.usuario["email"] = nuevo_email
-                st.success("Cambios guardados exitosamente.")
+                # Campo de entrada para cambiar la contraseña
+                nueva_contrasena = st.text_input("Nueva Contraseña", type="password")
+                confirmar_contrasena = st.text_input("Confirmar Contraseña", type="password")
 
-            # Campo de entrada para cambiar la contraseña
-            nueva_contrasena = st.text_input("Nueva Contraseña", type="password")
-            confirmar_contrasena = st.text_input("Confirmar Contraseña", type="password")
+                # Botón para guardar los cambios
+                if st.form_submit_button("Guardar Cambios"):
+                    if nueva_contrasena == confirmar_contrasena:
+                        # Lógica para cambiar los datos y la contraseña (reemplaza esto con tu propia lógica)
+                        session_state.usuario["nombres_apellidos"] = nuevo_nombre
+                        session_state.usuario["email"] = nuevo_email
+                        session_state.usuario["contrasena"] = nueva_contrasena
+                        st.success("Cambios guardados exitosamente.")
+                    else:
+                        st.error("Las contraseñas no coinciden. Inténtalo de nuevo.")
 
-            # Botón para cambiar la contraseña
-            if st.button("Cambiar Contraseña"):
-                if nueva_contrasena == confirmar_contrasena:
-                    # Lógica para cambiar la contraseña (reemplaza esto con tu propia lógica)
-                    session_state.usuario["contrasena"] = nueva_contrasena
-                    st.success("Contraseña cambiada exitosamente.")
-                else:
-                    st.error("Las contraseñas no coinciden. Inténtalo de nuevo.")
-
-        # Botón para cerrar sesión
-        if st.button("Cerrar Sesión"):
-            del session_state.usuario
-            st.success("Sesión cerrada exitosamente. ¡Hasta luego!")
+            # Botón para cerrar sesión
+            if st.button("Cerrar Sesión"):
+                del session_state.usuario
+                st.success("Sesión cerrada exitosamente. ¡Hasta luego!")
+        else:
+            st.error("Contraseña incorrecta. Inténtalo de nuevo.")
     else:
         st.error("Acceso no autorizado, inicie sesión para poder acceder.")
+
